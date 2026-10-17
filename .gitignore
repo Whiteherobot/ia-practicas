@@ -52,3 +52,6 @@ ProyectoFinalIA/dataset
 # System files
 .DS_Store
 Thumbs.db
+
+# Pesos de YOLO que ultralytics descarga solo
+*.pt
