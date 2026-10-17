@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  semaforo:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.11", "3.12"]
+    defaults:
+      run:
+        working-directory: 07-semaforo-inteligente
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install -r requirements.txt pytest
+      - run: pytest -q
+
+  notebooks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install nbformat
+      - name: Los notebooks son válidos
+        run: |
+          python - <<'PY'
+          import glob, nbformat
+          for ruta in sorted(glob.glob("*/*.ipynb")):
+              nbformat.validate(nbformat.read(ruta, as_version=4))
+              print("ok", ruta)
+          PY
