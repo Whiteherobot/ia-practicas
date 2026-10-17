@@ -12,6 +12,10 @@ verde según cuántos vehículos esperan en cada uno.
    proporción a la cola de cada sentido, con un mínimo de 12 s, y el riesgo
    alarga el "todo rojo" de despeje entre fases de 1 a 4 s.
 
+La parte en Unity del proyecto, una intersección simulada que reparte el verde
+con la misma regla, está en
+[unity-simulacion-semaforo](https://github.com/Whiteherobot/unity-simulacion-semaforo).
+
 El motor difuso (`semaforo/difuso.py`) está escrito con numpy y reproduce lo que
 hace `evalfis` de MATLAB con las opciones por defecto (mínimo, máximo y
 centroide).
