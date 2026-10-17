@@ -1,0 +1,9 @@
+* text=auto
+*.png binary
+*.jpg binary
+*.pdf binary
+*.pptx binary
+*.xlsx binary
+*.xlsm binary
+*.docx binary
+*.m text eol=crlf
