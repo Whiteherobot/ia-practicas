@@ -27,12 +27,18 @@ fis = addMF(fis,'riesgo_accidente','trimf',[6 10 10],'Name','alto');
 
 %% === REGLAS DIFUSAS ===
 
+% Tabla completa: con las 5 reglas originales, combinaciones como tráfico
+% medio y visibilidad media no disparaban ninguna regla y evalfis devolvía 5.
 ruleList = [
-    3 1 3 1 1;   % alta & mala → alto
+    1 1 2 1 1;   % baja & mala → medio
+    1 2 1 1 1;   % baja & media → bajo
     1 3 1 1 1;   % baja & buena → bajo
     2 1 2 1 1;   % media & mala → medio
+    2 2 2 1 1;   % media & media → medio
+    2 3 1 1 1;   % media & buena → bajo
+    3 1 3 1 1;   % alta & mala → alto
+    3 2 3 1 1;   % alta & media → alto
     3 3 2 1 1;   % alta & buena → medio
-    1 1 2 1 1;   % baja & mala → medio
 ];
 
 fis = addRule(fis, ruleList);
